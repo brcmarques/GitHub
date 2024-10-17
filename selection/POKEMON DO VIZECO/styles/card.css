@@ -1,0 +1,46 @@
+
+.card {
+    box-sizing: border-box;
+    text-transform: capitalize;
+    text-align: center;
+    list-style: none;
+    border-radius: 70px;
+    background-color: #ffffff;
+  }
+  
+  .card:hover {
+    transform: translateY(-30px);
+  }
+  
+  li {
+    margin-bottom: 100px;
+  }
+  
+  .pokemonContent {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 70px;
+  }
+  
+  .pokemon-image {
+    padding-bottom: -20px;
+  }
+  
+  img {
+    align-items: center;
+    margin: 10px;
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+  }
+  
+  h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #111;
+  }
+  
+  p {
+    margin: 0;
+  }
+  

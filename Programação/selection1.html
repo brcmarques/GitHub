@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotação do Dólar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cotação</h1>
+    <select id="minhaSelecao">
+        <option value="">-- Selecione uma opção --</option>
+        <option value="alta">Cotação Alta DOLAR</option>
+        <option value="baixa">Cotação Baixa DOLAR</option>
+        <option value="alta1">Cotação Alta EURO</option>
+        <option value="baixa1">Cotação Baixa EURO</option>
+    </select>
+
+    <p id="resultado"></p>
+
+    <script>
+        fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL")
+            .then(data => data.json())
+            .then(body => {
+                const high = parseFloat(body.USDBRL.high).toFixed(2);
+                const low = parseFloat(body.USDBRL.low).toFixed(2);
+
+                const select = document.getElementById('minhaSelecao');
+                select.addEventListener('change', function() {
+                    const valorSelecionado = select.value;
+                    switch (valorSelecionado) {
+                        case 'alta':
+                            document.getElementById('resultado').textContent = `Cotação Alta: R$ ${high}`;
+                            break;
+                        case 'baixa':
+                            document.getElementById('resultado').textContent = `Cotação Baixa: R$ ${low}`;
+                            break;
+                        default:
+                            document.getElementById('resultado').textContent = '';
+                    }
+                });
+            })
+            .catch(error => console.error('Erro ao buscar a cotação:', error));
+
+
+
+            
+            fetch("https://economia.awesomeapi.com.br/json/last/EUR-BRL")
+            .then(data => data.json())
+            .then(body => {
+                const high = parseFloat(body.EURBRL.high).toFixed(2);
+                const low = parseFloat(body.EURBRL.low).toFixed(2);
+
+                const select = document.getElementById('minhaSelecao');
+                select.addEventListener('change', function() {
+                    const valorSelecionado = select.value;
+                    switch (valorSelecionado) {
+                        case 'alta1':
+                            document.getElementById('resultado').textContent = `Cotação Alta: R$ ${high}`;
+                            break;
+                        case 'baixa1':
+                            document.getElementById('resultado').textContent = `Cotação Baixa: R$ ${low}`;
+                            break;
+                        default:
+                            document.getElementById('resultado').textContent = '';
+                    }
+                });
+            })
+            .catch(error => console.error('Erro ao buscar a cotação:', error));
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cotação do Dólar e Euro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Cotação de moeda</h1>
+    <select id="minhaSelecao">
+        <option value="">-- Selecione uma opção --</option>
+        <option value="alta">Cotação Alta DOLAR</option>
+        <option value="baixa">Cotação Baixa DOLAR</option>
+        <option value="alta1">Cotação Alta EURO</option>
+        <option value="baixa1">Cotação Baixa EURO</option>
+    </select>
+
+    <p id="resultado"></p>
+
+    <script>
+        let highDolar, lowDolar, highEuro, lowEuro;
+
+        // Buscar cotação do Dólar
+        fetch("https://economia.awesomeapi.com.br/json/last/USD-BRL")
+            .then(data => data.json())
+            .then(body => {
+                highDolar = parseFloat(body.USDBRL.high).toFixed(2);
+                lowDolar = parseFloat(body.USDBRL.low).toFixed(2);
+                atualizarResultado();
+            })
+            .catch(error => console.error('Erro ao buscar a cotação do Dólar:', error));
+
+        // Buscar cotação do Euro
+        fetch("https://economia.awesomeapi.com.br/json/last/EUR-BRL")
+            .then(data => data.json())
+            .then(body => {
+                highEuro = parseFloat(body.EURBRL.high).toFixed(2);
+                lowEuro = parseFloat(body.EURBRL.low).toFixed(2);
+                atualizarResultado();
+            })
+            .catch(error => console.error('Erro ao buscar a cotação do Euro:', error));
+
+        const select = document.getElementById('minhaSelecao');
+        select.addEventListener('change', atualizarResultado);
+
+        function atualizarResultado() {
+            const valorSelecionado = select.value;
+            let resultado = '';
+
+            switch (valorSelecionado) {
+                case 'alta':
+                    resultado = `Cotação Alta Dólar: R$ ${highDolar}`;
+                    break;
+                case 'baixa':
+                    resultado = `Cotação Baixa Dólar: R$ ${lowDolar}`;
+                    break;
+                case 'alta1':
+                    resultado = `Cotação Alta Euro: R$ ${highEuro}`;
+                    break;
+                case 'baixa1':
+                    resultado = `Cotação Baixa Euro: R$ ${lowEuro}`;
+                    break;
+                default:
+                    resultado = '';
+            }
+
+            document.getElementById('resultado').textContent = resultado;
+        }
+    </script>
+
+</body>
+</html>

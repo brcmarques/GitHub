@@ -1,0 +1,24 @@
+h1 {
+    color: blue;
+}
+div#div1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+    background-color: aliceblue;
+    width: auto;
+    height: 100vh;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+input{
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}

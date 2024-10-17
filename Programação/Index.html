@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    
+</head>
+<body style="text-align: center;">
+
+
+    <main id="dolar" style="font-size: 20em;"><b><h1>Hello World</b></main>
+      <select name="moedas" id="moedas1">
+        <option id="dolar1" value="dolar">dolar</option>
+        <option id="euro1" value="euro">euro</option>
+      </select>
+      
+      
+    <script>
+       let a = dolar1
+       let b = euro1
+       if (a = dolar1)
+        fetch ("https://economia.awesomeapi.com.br/json/last/USD-BRL").then(data => data.json()).then(body =>{
+        
+        let high = body.USDBRL.high
+        document.getElementById("dolar").innerHTML = parseFloat(high).toFixed(2);
+        })
+       
+
+       else 
+        fetch ("https://economia.awesomeapi.com.br/json/last/EUR-BRL").then(data => data.json()).then(body =>{
+        
+        let high = body.EURBRL.low
+        document.getElementById("dolar").innerHTML = parseFloat(high).toFixed(2);
+
+    
+    })
+    </script>
+</body>
+</html>

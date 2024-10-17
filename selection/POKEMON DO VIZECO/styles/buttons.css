@@ -1,0 +1,49 @@
+.close-modal-button {
+    background-color: #e7443c;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .close-modal-button:hover {
+    background-color: #d3302a;
+  }
+  
+  .back-to-top-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    background-color: #e7443c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 50px 50px 50px 50px;
+    text-align: center;
+    font-weight: bolder;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  
+  .load-all-pokemons-button {
+    position: relative;
+    width: 100px;
+    height: 3rem;
+    border-radius: 0 50px 50px 0;
+    background-color: #727272;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .load-all-pokemons-button:hover {
+    background-color: #E7443C;
+  }
